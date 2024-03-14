@@ -10,12 +10,19 @@
   let points = 50;
   let winner = false;
 
+  if(points > 40) {
+    let winner = true; //Doesn't show as true if called in console since it's block scope.
+  }
+
   const person = {
     name: 'Wes',
     age: 28
   }
+  // Can't change or wipe out entire const variable, but you can change attributes of an object
+  // person.age = 29; would change person object age to 29
 
   const wes = Object.freeze(person);
+  // This doesn't allow the above to happen. Will always stay the same.
 
 </script>
 </body>

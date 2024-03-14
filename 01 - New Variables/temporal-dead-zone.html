@@ -7,7 +7,10 @@
 <body>
 <script>
   console.log(pizza);
-  const pizza = 'Deep Dish 🍕🍕🍕';
+  var pizza = 'Deep Dish 🍕🍕🍕';
+  // If you try to log a var before it's declared you will get undefined b/c with var you can access them as they are defined, before they are defined. I.E. - You cannot access the actual value of them, but you can access the fact that the variable has been created before.
+
+  // If you use const or let above, you'll get an error. Known as the Temporal Dead Zone
 
 </script>
 </body>

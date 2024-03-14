@@ -6,10 +6,25 @@
 </head>
 <body>
 <script>
+  // (function () {
+  //   const name = 'wes';
+  //   console.log(name);
+  // })();
+  // Above IIFE is no longer needed in ES6. Instead you can write it as below in curly braces.
+
   {
     const name = 'wes';
     console.log(name);
   }
+  // Advantage of this is that it's scoped to this block b/c of curly braces. So on page load console would log wes, but if I tried to call the name in console myself it'd give me blank string.
+
+  for(var i = 0; i < 10; i++) {
+    console.log(i);
+    setTimeout(function() {
+      console.log('The number is ' + i);
+    },1000);
+  }
+  // This 1st log runs immediately and logs 1,2,3....10. The 2nd log runs after 1 second, after the loop runs through every iteration. Therefore var i is being overwritten every time. so it will only show 'The number is 10'.
 
   for(let i = 0; i < 10; i++) {
     console.log(i);
@@ -17,6 +32,7 @@
       console.log('The number is ' + i);
     },1000);
   }
+  // So we use let since it's block scope. Now the second log logs each individual "step"
 
 </script>
 </body>
