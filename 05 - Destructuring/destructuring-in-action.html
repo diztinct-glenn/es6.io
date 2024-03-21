@@ -11,6 +11,10 @@
 
   console.log(inRing, onSide);
   [inRing, onSide] = [onSide, inRing];
+  // This is essentially better way of doing this. It takes out the 'temporary' middleman:
+  // var temporary = inRing;
+  // inRing = onSide;
+  // onSide = temporary;
   console.log(inRing, onSide);
 
 </script>

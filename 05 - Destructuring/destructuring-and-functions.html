@@ -9,18 +9,35 @@
   function convertCurrency(amount) {
     const converted = {
       USD: amount * 0.76,
-      GPB: amount * 0.53,
+      GBP: amount * 0.53,
       AUD: amount * 1.01,
       MEX: amount * 13.30
     };
     return converted;
   }
 
-  function tipCalc({ total = 100, tip = 0.15, tax = 0.13 } = {}) {
+  const hundo = convertCurrency(100);
+  console.log(hundo);
+  console.log(hundo.USD);
+  console.log(hundo.GBP);
+  console.log(hundo.AUD);
+  console.log(hundo.MEX);
+
+  const { USD, GBP, AUD, MEX } = convertCurrency(100);
+  console.log(USD, GBP, AUD, MEX);
+  // This is a more efficent way of doing the above. We're destructuring with a function! SO COOL!
+
+
+  // default named arguments example
+  function tipCalc({ total = 100, tip = 0.15, tax = 0.13 } = {}) { // The = {} at the end is a backup for if we called this function with no arguments (tipCalc()). Without it we'd get an error with undefined or null because in the definition of the function we're destructuring and the object isn't getting passed in. So with = {} if nothing gets passed into the call of tipCalc(); it will automatically insert our defaults from the destructuring into the blank object. Bit of wonky syntax but great back up.
+
+    // The 3 arguments are wrapped in curly brackets. This different than from this example in default-arguments.html in module 2 where there are no curly brackets.
+    // When we pass in an object it's going to destructure them into the 3 variables (total, tip, tax) available inside of this function
     return total + (tip * total) + (tax * total);
   }
 
   const bill = tipCalc({ tip: 0.20, total: 200 });
+  // Setting it up in the curly brackets allows us to leave off things and not have to worry about passing that undefined "hole filler" if the missing thing is in the middle of the arguments. It will still work because the tax default will kick in. It also allows us to place things in any order which is NICE!
   console.log(bill);
 
 </script>

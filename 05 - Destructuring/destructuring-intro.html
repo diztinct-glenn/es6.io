@@ -14,7 +14,14 @@
     twitter: '@wesbos'
   };
 
-  const { first, last, twitter } = person;
+  const { first, last } = person;
+  // This is the destructuring way of writing this out:
+  // const first = person.first;
+  // const last = person.last;
+  // const twitter = person.twitter;
+
+  // 1st you assign the variable like so: const { }. The curly brackets are not a block or an object. It is the destructuring syntax.
+  // So above it essentially is saying give me a const named first and a const named last. And do that by taking it from the person object. (= person;)
 
   const wes = {
     first: 'Wes',
@@ -31,9 +38,14 @@
   };
 
   const { twitter: tweet, facebook: fb } = wes.links.social;
+  //  You can rename your new variables as you destructure them. Examples above. You grab what property you want (twitter) and then you assign the new name like so (: tweet)
 
   const settings = { width: 300, color: 'black' }  // height, fontSize
+  // const { width, height, color, fontSize } = settings;
+  // The line above is able to pick out width and color because they exist on the settings variable already (100 and 'black'). But if I called height or fontSize I'd get back undefined because they haven't been set yet.
   const { width = 100, height = 100, color = 'blue', fontSize = 25} = settings;
+  // This is the solution. When destructuring you can set a fallback/default value. How this works is like so. width, is it being destructured from the settings object? Yes, so width is going to be 300. height isn't being destructured from the settings object, since it's not in there orignally. So it's going to rollback to the default 100. and so on...
+  // OF NOTE: the bottom destrucutring here is not adding height or fontSize property to the settings object. If you logged settings you'd get this: { width: 300, color: 'black' }. It is only destructuring or making new variables from the settings object
 
 </script>
 </body>

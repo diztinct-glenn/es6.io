@@ -8,14 +8,19 @@
 <script>
   const details = ['Wes Bos', 123, 'wesbos.com'];
   const [name, id, website] = details;
+  // Above is the better/destructuring way to write this out:
+  // const name = details[0];
+  // const id = details[1];
+  // const website = details[2];
   console.log(name, id, website);
 
-  const data = 'Basketball,Sports,90210,23,wes,bos,cool';
-  const [itemName, category, sku, inventory] = data.split(',');
+  const data = 'Basketball, Sports, 90210, 23, wes, bos, cool'; // wes, bos, cool aren't destructured, because there are no variables assigned in the destructuring below.
+  const [itemName, category, sku, inventory] = data.split(', ');
 
   const team = ['Wes', 'Harry', 'Sarah', 'Keegan', 'Riker'];
 
   const [captain, assistant, ...players] = team;
+  // captain gets assigned Wes. assistant gets assigned Harry. We use the rest operator(...) on players so it will assign the rest of the values in the team array to a new array saved to variable players. i.e. players =  ['Sarah', 'Keegan', 'Riker']
 
 </script>
 </body>
