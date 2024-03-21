@@ -11,18 +11,23 @@
 </head>
 <body>
 <script>
-  function highlight(strings, ...values) {
+  function highlight(strings, ...values) { // ...values is called ES6 Rest Operator. This takes the rest of the values that are passed to that argument. I.E. - instead of typing highlight(arg1, arg2, arg3, etc) you write highlight strings, ...values)...
+    // The strings array is always going to be one larger than the values array, so that's why we add the || '' so it doesn't output undefined
+    // debugger;
+    // If we ran this above debugger and then in devtools went to Sources > Scope. We'd see in the Local Scope: this = Window, strings = ["My dog's name is ", " and he is ", " years old."], values = ["Snickers", 100]  VERY VERY COOL
     let str = '';
     strings.forEach((string, i) => {
       str += `${string} <span contenteditable class="hl">${values[i] || ''}</span>`;
     });
+    // This loops through the strings and makes the sentence with styling the spans wrapped around the values ( "Snickers" and 100)
     return str;
   }
 
   const name = 'Snickers';
   const age = 100;
 
-  const sentence = highlight`My dog's name is ${name} and he is ${age} years old`;
+  const sentence = highlight`My dog's name is ${name} and he is ${age} years old.`;
+  // How hihglight is placed above is called tagging. What happens is the browser runs the highlight function we created and it's going to provide it with all the info about the string (all the pieces that the person typed as well as the variables that get passed in). Whatever we return from this function is what the sentence is actually going to be. So it's sort of like a step in between. Before the sentence gets put in, we have the ability to modify it in any given way.
   document.body.innerHTML = sentence;
   console.log(sentence);
 

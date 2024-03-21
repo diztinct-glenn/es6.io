@@ -1,0 +1,1 @@
+Whenever you're displaying data from a user, you must make sure that the user isn't trying to do any Sneaky Pete stuff on you. i.e. - inserting an iframe or an image or to do an XSS(Cross Site Scripting). It's to stop hacking.

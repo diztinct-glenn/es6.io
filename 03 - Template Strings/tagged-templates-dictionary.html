@@ -22,8 +22,31 @@
     JS: 'JavaScript'
   };
 
-  const first = 'Wes';
-  const last = 'Bos';
+  function addAbbreviations(strings, ...values) {
+    const abbreviated = values.map(value => {
+      if(dict[value]) {
+        return `<abbr title="${dict[value]}">${value}</abbr>`
+      }
+      return value;
+    });
+    // This loops over values in dict object and places them in a string of abbreviated tags with their values.
+
+    return strings.reduce((sentence, string, i) => { // Anonymous function, which gives us 1) sentence, which is going to be whatever the previous one was (first one is going to be a blank string specified after that comma (i.e. - '')) 2) the actual string and 3) the index for that one. This is working on "appending" upon iterations. It's looping through the values to make the sentence.
+      return `${sentence}${string}${abbreviated[i] || ''}`;
+    }, '');
+    // The way that reduce works is that it will loop over each one and build the string as we go all in the function. Don't have to do let str = '' process in the tagged-templates.html example.
+    // Reduce takes 2 things: 1) the function and 2) what you start with.
+    console.log(abbreviated);
+  }
+
+  const first = 'Glenn';
+  const last = 'Basgaard';
+  const sentence = addAbbreviations`Hello my name is ${first} ${last} and I love to code ${'HTML'}, ${'CSS'}, and ${'JS'}.`
+
+  const bio = document.querySelector('.bio');
+  const p = document.createElement('p');
+  p.innerHTML = sentence;
+  bio.appendChild(p);
 
 </script>
 </body>

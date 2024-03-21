@@ -21,6 +21,10 @@
     </div>
   `;
 
+  // Ternary (conditional) operator format:
+  // ${song.featuring}(if) ?(then) `(Featuring ${song.featuring})` :(else) ''}
+  // ^ Above is saying, if there's song.featuring, then(?) display it as (Featuring {value of that key}) otherwise(:) display nothing('')(empty string)
+
   document.body.innerHTML = markup;
 
 </script>
