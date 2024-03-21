@@ -16,16 +16,26 @@ const model = 'x5';
 const colour = 'Royal Blue';
 
 // .startsWith()
+course.startsWith('RFB'); // This is case sensitive. so 'rfb' wouldn't work.
+
+flightNumber.startsWith('AC', 3); // This runs the check after skipping first 3 characters.
 
 // .endsWith()
+flightNumber.endsWith('jz');
+
+accountNumber.endsWith('RT', 11); // Only takes the first 11 characters, and ignores the rest.
 
 // .includes()
+flightNumber.includes('AC'); // Just checks if it exists anywhere in the string
 
 // .repeat()
+// Allows you to take a string and repeat it.
+course.repeat(2); // Outputs RFB2RFB2
 
 function leftPad(str, length = 20) {
   return `→ ${' '.repeat(length - str.length)}${str}`;
 }
+// This function will right align the content below in the console. So each line starts with the arrow and "repeats" a space however many times the function specifies, which is the initial length you pass in, 20, - the length of the string.
 
 console.log(leftPad(make));
 console.log(leftPad(model));
