@@ -6,12 +6,34 @@
 </head>
 <body>
 <script>
-  function calculateBill(total, tax = 0.13, tip = 0.15) {
+  function calculateBill1(total, tax, tip) {
+    console.log(tax, tip);
+    // These return undefined.
+    // The old way of fixing this would be like this
+    if (tax === undefined) {
+      tax = 0.13;
+    }
+    if (tip === undefined) {
+      tip = 0.15;
+    }
+    // Or like this
+    tax = tax || 0.13;
+    tip = tip || 0.15;
+
     return total + (total * tax) + (total * tip);
   }
 
-  const totalBill = calculateBill(100, undefined, 0.25);
-  console.log(totalBill);
+  // This ES6 way is better because you can set it when you define your function. If nothing is passed in for an argument, then the defaults you assigned take the place and the function will still work.
+  function calculateBill2(total, tax = 0.13, tip = 0.15) {
+    return total + (total * tax) + (total * tip);
+  }
+
+  const totalBill1 = calculateBill1(100);
+  const totalBill2 = calculateBill2(100, undefined, 0.25);
+  console.log(totalBill1);
+  // This would give us NaN, because there's no values assigned/passed into the function for tax and tip.
+  console.log(totalBill2);
+  // This works even with the tax being passed in as undefined, because the default function arguments has tax assigned to 0.13.
 </script>
 </body>
 </html>

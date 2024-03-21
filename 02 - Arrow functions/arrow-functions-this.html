@@ -61,6 +61,40 @@
   </div>
 
   <script>
+    const box = document.querySelector('.box');
+    box.addEventListener('click', () => {
+      console.log(this);
+    });
+    // When you use the arrow function, the value of 'this' doesn't get rebound inside of that function. It is just inherited from whatever the parent scope is. The parent scope of above would be the window. Window > Box.
+    // In this case we don't want the arrow function because of the scoping issue, so we use old school anonymous function below since it will return box as 'this'
+
+    box.addEventListener('click', function() {
+      let first = 'opening';
+      let second = 'open';
+      console.log(this);
+
+      if(this.classList.contains(first)) {
+        [first, second] = [second, first];
+      }
+      // ES6 allows us to switch the variables like above. So first would then be assigned to 'open' and second would be assigned to 'opening'. This is just making the css animation in example work better.
+
+      this.classList.toggle(first);
+      // Here this = box
+
+      // setTimeout(function() {
+      //   console.log(this.classList);
+      //   // This would log undefined
+      //   console.log(this);
+      //   // This would log Window. It's not box anymore because we entered a new function, and this function hasn't been bound to anything, which means that if it's not bound to anything it's going to be equal to the window.
+      //   this.classList.toggle('open');
+      // }, 500);
+
+      // So in order to fix this issue above, we change the anonymour function to be an arrow function, because arrow functions don't change the value of this. It inherits the value of this from the parent. We don't have to worry about the scope changing.
+      setTimeout(() => {
+        console.log(this.classList);
+        this.classList.toggle(second);
+      }, 500);
+    });
   </script>
 
 </body>

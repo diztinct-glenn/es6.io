@@ -18,11 +18,12 @@
     console.log(this);
     this.classList.toggle('on');
   });
+  // If I used an arrow function instead of the anonymous function in the addEventListener, then 'this' would equal the Window object.
 
   // When you need a method to bind to an object
   const person = {
     points: 23,
-    score() {
+    score() { // This is a better way to write a method for an object than score: function() {
       console.log(this);
       this.points++;
     }
@@ -39,11 +40,14 @@
   const beemer = new Car('bmw', 'blue');
   const subie = new Car('Subaru', 'white');
 
-  Car.prototype.summarize = function() {
+  // prototype lets us add onto objects that are already created. Here we're adding a method on to all of the Car objects.
+  Car.prototype.summarize = function() { // Using arrow function won't work here because the method is trying to use 'this'.
      return `This car is a ${this.make} in the colour ${this.colour}`;
   };
 
   // When you need arguments object
+
+  // Arrow functions don't have access to the arguments object. So, orderChildren can't = () => and must be an anonymous function.
   const orderChildren = function() {
     const children = Array.from(arguments);
     return children.map((child, i) => {

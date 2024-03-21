@@ -11,18 +11,23 @@
   const fullNames = names.map(function(name) {
     return `${name} bos`;
   });
+  // Regular Function
 
   const fullNames2 = names.map((name) => {
     return `${name} bos`;
   });
+  // Arrow Function
 
   const fullNames3 = names.map(name => {
     return `${name} bos`;
   });
+  // Also Arrow Function. Only difference is when you have 1 parameter (here it is name) you don't need to wrap it in parantheses. Ex for parantheses would be (name, i) =>
 
   const fullNames4 = names.map(name => `${name} bos`);
+  // Implicit return. The 3 examples above are explicit returns, meaning the word return is written out. Here we get rid of the curly braces and put it all on 1 line.
 
   const fullNames5 = names.map(() => `cool bos`);
+  // If you have no arugments, you need to pass empty parantheses.
 
   const sayMyName = (name) => {
     alert(`Hello ${name}!`)
