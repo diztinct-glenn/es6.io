@@ -18,13 +18,22 @@
 <script>
   const cuts = ['Chuck', 'Brisket', 'Shank', 'Short Rib'];
 
-  // for (const [i, cut] of cuts.entries()) {
-  //   console.log(`${cut} is the ${i + 1} item`);
+  // for (const [i, cut] of cuts.entries()) { // entries is the Array iterator. It's built into JS. If we ran console.log(cut); inside this, the result would be arrays with the index of each item and the item itself:
+  //   // [0, 'Chuck']
+  //   // [1, 'Brisket']
+  //   // [2, 'Shank']
+  //   // [3, 'Short Rib']
+
+  //   // Since it's returned as arrays, we can immediately destructure that into their own variables, i.e. - [i, cut]
+
+  //   // console.log(`${cut} is the ${i + 1} item`);
   // }
 
   // function addUpNumbers() {
+  //   console.log(arguments); // This would console log all the arguments passed into the function. i.e. - [10, 23, 52, 34, 12, 13, 123] This may look like an array, but when you viewing it in the console, you can see it's an object
+  //   // Aruguments is a list with only 1 thing on it, length. However you can iterate over it with the for...of loop because it has a Symbol.iterator
   //   let total = 0;
-  //   for (const num of arguments) {
+  //   for (const num of arguments) { // This gets the sum of all arguments, 267.
   //     total += num;
   //   }
   //   console.log(total);
@@ -37,6 +46,7 @@
   // for (const char of name) {
   //   console.log(char);
   // }
+  // This would log each character in the string
 
   const ps = document.querySelectorAll('p');
   for (const paragraph of ps) {

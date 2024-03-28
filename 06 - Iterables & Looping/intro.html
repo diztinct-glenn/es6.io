@@ -21,29 +21,36 @@
 
   const cuts = ['Chuck', 'Brisket', 'Shank', 'Short Rib'];
 
-  cuts.shop = 'MM MEats';
+  // cuts.shop = 'MM MEats';
+
+  // All below functions accomplish same thing in different ways
 
   // for (let i = 0; i < cuts.length; i++) {
   //   console.log(cuts[i]);
   // }
+  // Downside to above is confusing syntax. Doesn't read nicely.
 
   // cuts.forEach((cut) => {
   //   console.log(cut);
   //   if(cut === 'Brisket') {
-  //     continue;
+  //     break;
   //   }
   // });
+  // Downside to this is you can't use a break; or continue; inside a forEach(); So this one is fine if you don't need to skip over anything in what you're looping.
 
   // for (const index in cuts) {
   //   console.log(cuts[index]);
   // }
+  // Downside to this is it iterates over absolutely everything in the array, including things that have been added to the prototype. if you add something to the Array prototype (i.e. - Array.prototype.shuffle above) it will output that function. We don't want that.
 
   for (const cut of cuts) {
     if(cut === 'Brisket') {
-      continue;
+      // break; // This will only return Chuck
+      continue; // This will return Chuck, Shank, Short Rib
     }
     console.log(cut);
   }
+  // for of loop CANNOT be used on objects.
 
 </script>
 </body>
